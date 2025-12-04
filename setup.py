@@ -8,11 +8,11 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="ctfh",
     version="1.0.0",
-    author="CTF-H Team",
+    author="Ghanish Patil",
     description="Interactive CTF, Cryptography & Cybersecurity Toolkit",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/your/ctfh",
+    url="https://github.com/ghanishpatil08/ctfh.git",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
