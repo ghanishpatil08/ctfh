@@ -2,8 +2,8 @@ Metadata-Version: 2.4
 Name: ctfh
 Version: 1.0.0
 Summary: Interactive CTF, Cryptography & Cybersecurity Toolkit
-Home-page: https://github.com/your/ctfh
-Author: CTF-H Team
+Home-page: https://github.com/ghanishpatil08/ctfh.git
+Author: Ghanish Patil
 Classifier: Development Status :: 4 - Beta
 Classifier: Intended Audience :: Education
 Classifier: Topic :: Security
