@@ -1,0 +1,7 @@
+colorama>=0.4.6
+requests>=2.31.0
+
+[full]
+Pillow>=10.0.0
+jsbeautifier>=1.14.0
+base58>=2.1.0

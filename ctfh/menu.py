@@ -56,6 +56,8 @@ class Menu:
                     result = self.handlers[choice_num]()
                     if result is False:
                         return False  # Exit signal
+                    elif result is None:
+                        return True  # Go back signal (exit current menu)
                     # Continue to next iteration (menu will redisplay)
                 else:
                     print_colored(f"Invalid option: {choice_num}", Fore.RED)

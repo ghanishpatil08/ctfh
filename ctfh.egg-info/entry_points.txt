@@ -1,0 +1,2 @@
+[console_scripts]
+ctfh = ctfh.main:main
