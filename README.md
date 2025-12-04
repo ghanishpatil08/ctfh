@@ -40,57 +40,134 @@ Each module is interactive and guides you through required inputs (text, files, 
 
 ---
 
-## 🚀 Installation
+## 🚀 Installation (virtual environment required)
 
-### From PyPI (recommended for users)
+For all operating systems, it is **strongly recommended and effectively required** to run CTF‑H inside a dedicated Python virtual environment.
 
-Once you’ve published `ctfh` to PyPI, users can install it on **Windows, Linux (including Kali), and macOS** with:
+The pattern is always:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+> On Windows `python3` is usually `python`, and `source venv/bin/activate` is equivalent to `venv\Scripts\activate` in PowerShell/cmd.
+
+Once your environment is active, follow the OS‑specific steps below.
+
+---
+
+### Windows
+
+1. **Create and activate virtual environment (required)**
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+2. **Install from PyPI (full feature set)**
 
 ```bash
 pip install "ctfh[full]"
 ```
 
-This installs CTF‑H plus all optional dependencies (Pillow, jsbeautifier, base58). Then run:
-
-- **Windows:**
-  ```bash
-  python -m ctfh.main
-  ```
-- **Linux / macOS (or if `ctfh` is on PATH):**
-  ```bash
-  ctfh
-  ```
-
-To install only the core features (no stego/JS extras):
+3. **Run**
 
 ```bash
-pip install ctfh
-ctfh
+python -m ctfh.main
 ```
 
-### From source (development install)
+4. **From source (development)**
 
 ```bash
 git clone https://github.com/ghanishpatil08/ctfh
 cd ctfh
 
-# Create a virtual environment
-python -m venv .venv
+python -m venv venv
+venv\Scripts\activate
 
-# Activate it
-# Windows
-.venv\Scripts\activate
-# Linux / macOS
-# source .venv/bin/activate
-
-# Install in editable mode
 pip install -e ".[full]"
-
-# Run
 python -m ctfh.main
 ```
 
-### Local system‑wide install from source
+---
+
+### Linux / Kali
+
+1. **Create and activate virtual environment (required)**
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+2. **Install from PyPI (full feature set)**
+
+```bash
+pip install "ctfh[full]"
+```
+
+3. **Run**
+
+```bash
+ctfh
+```
+
+4. **From source (development)**
+
+```bash
+git clone https://github.com/ghanishpatil08/ctfh
+cd ctfh
+
+python3 -m venv venv
+source venv/bin/activate
+
+pip install -e ".[full]"
+ctfh
+```
+
+---
+
+### macOS
+
+1. **Create and activate virtual environment (required)**
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+2. **Install from PyPI (full feature set)**
+
+```bash
+pip install "ctfh[full]"
+```
+
+3. **Run**
+
+```bash
+ctfh
+```
+
+4. **From source (development)**
+
+```bash
+git clone https://github.com/ghanishpatil08/ctfh
+cd ctfh
+
+python3 -m venv venv
+source venv/bin/activate
+
+pip install -e ".[full]"
+ctfh
+```
+
+---
+
+### Local system‑wide install from source (advanced)
+
+If you know what you’re doing and still want to install system‑wide:
 
 ```bash
 pip install .
