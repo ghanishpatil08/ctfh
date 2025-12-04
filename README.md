@@ -12,9 +12,14 @@ CTF-H is a fully interactive, menu‑driven CLI toolkit for:
 
 Launch it with:
 
-```bash
-ctfh
-```
+- **Windows:**
+  ```bash
+  python -m ctfh.main
+  ```
+- **Linux / macOS (or if `ctfh` is on PATH):**
+  ```bash
+  ctfh
+  ```
 
 You’ll see a full‑screen pixel banner and a numbered main menu. Navigate by typing the **number** of a module and pressing **Enter**; each module shows its own submenu and returns to the main menu when you choose the “Back”/`0` option.
 
@@ -47,9 +52,14 @@ pip install "ctfh[full]"
 
 This installs CTF‑H plus all optional dependencies (Pillow, jsbeautifier, base58). Then run:
 
-```bash
-ctfh
-```
+- **Windows:**
+  ```bash
+  python -m ctfh.main
+  ```
+- **Linux / macOS (or if `ctfh` is on PATH):**
+  ```bash
+  ctfh
+  ```
 
 To install only the core features (no stego/JS extras):
 
@@ -77,7 +87,7 @@ python -m venv .venv
 pip install -e ".[full]"
 
 # Run
-ctfh
+python -m ctfh.main
 ```
 
 ### Local system‑wide install from source

@@ -32,9 +32,14 @@ pip install ctfh
 
 Run the toolkit:
 
-```bash
-ctfh
-```
+- **Windows:**
+  ```bash
+  python -m ctfh.main
+  ```
+- **Linux / macOS (or if `ctfh` is on PATH):**
+  ```bash
+  ctfh
+  ```
 
 ### 2.2. Full install (all features)
 
@@ -51,9 +56,14 @@ This installs:
 
 Run:
 
-```bash
-ctfh
-```
+- **Windows:**
+  ```bash
+  python -m ctfh.main
+  ```
+- **Linux / macOS (or if `ctfh` is on PATH):**
+  ```bash
+  ctfh
+  ```
 
 If `pip` on your system is tied to Python 2, use `pip3` instead.
 
@@ -102,11 +112,16 @@ pip install -e .
 
 ### 3.4. Run CTF‑H
 
-```bash
-ctfh
-```
+- **Windows (recommended):**
+  ```bash
+  python -m ctfh.main
+  ```
+- **Linux / macOS (or if `ctfh` is on PATH):**
+  ```bash
+  ctfh
+  ```
 
-If the `ctfh` command isn’t found, make sure your virtual environment is activated and your `Scripts`/`bin` directory is on `PATH`.
+If the `ctfh` command isn’t found, make sure your virtual environment is activated and your `Scripts`/`bin` directory is on `PATH`. On Windows, using `python -m ctfh.main` avoids PATH issues entirely.
 
 ---
 
