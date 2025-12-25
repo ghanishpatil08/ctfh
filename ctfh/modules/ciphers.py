@@ -292,5 +292,7 @@ def ciphers_menu() -> None:
     ]
     
     menu = Menu("Cipher Module", options)
-    menu.run()
+    result = menu.run()
+    # Return None to signal "go back to main menu" when submenu exits
+    return None if result else False
 

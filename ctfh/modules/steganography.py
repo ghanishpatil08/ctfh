@@ -224,5 +224,7 @@ def steganography_menu() -> None:
     ]
     
     menu = Menu("Steganography Module", options)
-    menu.run()
+    result = menu.run()
+    # Return None to signal "go back to main menu" when submenu exits
+    return None if result else False
 

@@ -129,6 +129,85 @@ ctfh
 
 ---
 
+### Termux (Android)
+
+CTF-H works on **Termux** (Android terminal emulator). Since Termux is Linux-based, it follows the same installation pattern as Linux.
+
+**Prerequisites:**
+
+1. Install Termux from [F-Droid](https://f-droid.org/packages/com.termux/) or [GitHub Releases](https://github.com/termux/termux-app/releases)
+2. Update packages and install Python 3.10+ plus system libraries needed for Pillow:
+
+```bash
+pkg update && pkg upgrade
+pkg install python python-pip git
+pkg install libjpeg-turbo libpng libwebp tiff freetype
+```
+
+**Installation:**
+
+1. **Create and activate virtual environment (required)**
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+2. **Install from PyPI**
+
+**Option A: Full feature set (includes steganography)**
+
+```bash
+pip install "ctfh[full]"
+```
+
+If Pillow fails to build, install system dependencies first:
+
+```bash
+pkg install libjpeg-turbo libpng libwebp tiff freetype
+pip install --upgrade pip
+pip install "ctfh[full]"
+```
+
+**Option B: Core features only (no steganography/JS tools)**
+
+If you encounter Pillow build issues, you can install the core version:
+
+```bash
+pip install ctfh
+```
+
+This installs CTF-H without optional dependencies (Pillow, jsbeautifier, base58). You'll still have access to:
+- Hashing, Ciphers, Encoding/Decoding
+- Binary Analysis, Vulnerability Scanner
+- HTTP Fuzzing
+
+3. **Run**
+
+```bash
+ctfh
+```
+
+4. **From source (development)**
+
+```bash
+git clone https://github.com/ghanishpatil08/ctfh
+cd ctfh
+
+python3 -m venv venv
+source venv/bin/activate
+
+pip install -e ".[full]"
+ctfh
+```
+
+**Note:** Some features may have limitations on Termux:
+- Binary analysis tools (like `objdump`) require additional packages: `pkg install binutils`
+- Image processing (steganography) requires Pillow and system libraries: `pkg install libjpeg-turbo libpng libwebp tiff freetype`
+- Network features (HTTP fuzzing) work normally
+
+---
+
 ### macOS
 
 1. **Create and activate virtual environment (required)**
@@ -253,6 +332,33 @@ pip install "ctfh[full]"
 ```bash
 pip install Pillow jsbeautifier base58
 ```
+
+### Pillow build fails on Termux (Android)
+
+If you see `RequiredDependencyException: The headers or library files could not be found for jpeg` when installing `ctfh[full]`:
+
+1. **Install system libraries first (required for Pillow):**
+
+```bash
+pkg install libjpeg-turbo libpng libwebp tiff freetype
+```
+
+2. **Upgrade pip and retry:**
+
+```bash
+pip install --upgrade pip
+pip install "ctfh[full]"
+```
+
+3. **Alternative: Install core version only**
+
+If Pillow still fails after installing system libraries, use the core version (no steganography):
+
+```bash
+pip install ctfh
+```
+
+This gives you all features except steganography and some JS tools. You can always add Pillow later once system libraries are properly installed.
 
 ### HTTP fuzzing / scanner connectivity issues
 

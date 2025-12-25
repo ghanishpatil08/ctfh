@@ -31,9 +31,13 @@ class Menu:
         print_colored("-" * 60, Fore.CYAN)
         
         for num, name, *_ in self.options:
-            print_colored(f"  {num}. {name}", Fore.GREEN)
+            if num == 99:
+                print_colored(f"  {num}. {name}", Fore.YELLOW)
+            else:
+                print_colored(f"  {num}. {name}", Fore.GREEN)
         
         print_colored("-" * 60, Fore.CYAN)
+        print_colored("  Tip: Type '?' or 'h' for help", Fore.CYAN)
         print()
     
     def run(self) -> bool:
@@ -50,6 +54,17 @@ class Menu:
                 if not choice:
                     continue
                 
+                # Handle help/special keys
+                if choice.lower() in ['?', 'h', 'help']:
+                    # Show help if available
+                    if 99 in self.handlers:
+                        self.handlers[99]()
+                        continue
+                    else:
+                        print_colored("Help not available for this menu.", Fore.YELLOW)
+                        input("Press Enter to continue...")
+                        continue
+                
                 choice_num = int(choice)
                 
                 if choice_num in self.handlers:
@@ -57,7 +72,11 @@ class Menu:
                     if result is False:
                         return False  # Exit signal
                     elif result is None:
-                        return True  # Go back signal (exit current menu)
+                        # For submenus: return True to exit submenu and go back
+                        # For main menu: continue loop (don't exit)
+                        if self.title == "Main Menu":
+                            continue  # Main menu continues when submenu exits
+                        return True  # Submenu exits and goes back
                     # Continue to next iteration (menu will redisplay)
                 else:
                     print_colored(f"Invalid option: {choice_num}", Fore.RED)
@@ -85,7 +104,8 @@ def create_main_menu(modules: Dict[str, Callable]) -> Menu:
         (6, "Vulnerability Scanner", lambda: modules.get('vulnerability', lambda: None)()),
         (7, "JavaScript Tools", lambda: modules.get('javascript', lambda: None)()),
         (8, "HTTP Fuzzing", lambda: modules.get('fuzzing', lambda: None)()),
-        (9, "Exit", lambda: False),
+        (9, "Quick Actions", lambda: modules.get('quick', lambda: None)()),
+        (10, "Exit", lambda: False),
     ]
     return Menu("Main Menu", options)
 

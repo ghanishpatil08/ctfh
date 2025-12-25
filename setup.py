@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="ctfh",
-    version="1.0.0",
+    version="1.1.0",
     author="Ghanish Patil",
     description="Interactive CTF, Cryptography & Cybersecurity Toolkit",
     long_description=long_description,

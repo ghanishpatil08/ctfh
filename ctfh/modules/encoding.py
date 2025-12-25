@@ -4,7 +4,11 @@ import base64
 import binascii
 import urllib.parse
 from typing import Optional
-from ctfh.utils import print_section, print_colored, Fore, get_input
+from ctfh.utils import (
+    print_section, print_colored, Fore, Style, get_input,
+    ask_copy_to_clipboard, ask_save_to_file, add_to_history,
+    get_input_with_example
+)
 from ctfh.menu import Menu
 
 try:
@@ -26,6 +30,10 @@ def base64_encode(text: str) -> None:
     try:
         result = base64.b64encode(text.encode()).decode()
         print_colored(f"Encoded: {result}", Fore.GREEN)
+        
+        add_to_history("encode", {"type": "base64", "input": text, "output": result})
+        ask_copy_to_clipboard(result)
+        ask_save_to_file(f"Input: {text}\nBase64: {result}", "base64_encoded", "txt")
     except Exception as e:
         print_colored(f"Error: {e}", Fore.RED)
     input("\nPress Enter to continue...")
@@ -37,6 +45,10 @@ def base64_decode(text: str) -> None:
     try:
         result = base64.b64decode(text.encode()).decode('utf-8', errors='ignore')
         print_colored(f"Decoded: {result}", Fore.GREEN)
+        
+        add_to_history("decode", {"type": "base64", "input": text, "output": result})
+        ask_copy_to_clipboard(result)
+        ask_save_to_file(f"Input: {text}\nDecoded: {result}", "base64_decoded", "txt")
     except Exception as e:
         print_colored(f"Error: {e}", Fore.RED)
     input("\nPress Enter to continue...")
@@ -402,5 +414,7 @@ def encoding_menu() -> None:
     ]
     
     menu = Menu("Encoding / Decoding Module", options)
-    menu.run()
+    result = menu.run()
+    # Return None to signal "go back to main menu" when submenu exits
+    return None if result else False
 
