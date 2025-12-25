@@ -1,5 +1,7 @@
 # CTF-H Deployment Guide
 
+> **📖 For complete detailed steps, see [DEPLOYMENT_STEPS.md](DEPLOYMENT_STEPS.md)**
+
 ## Quick Deployment Steps
 
 ### Step 1: Update Version (Already Done ✅)
